@@ -1,12 +1,13 @@
 [Unit]
-Description=Reads various sensors and writes to InfluxDB
+Description=Reads ds18b20 sensors and writes to InfluxDB
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/home/pirate/PiFluxTemp/
-ExecStart=/usr/bin/python3 /home/pirate/PiFluxTemp/pifluxtemp.py
-Restart=always
+ExecStart=/usr/bin/python3 /home/pirate/smarthome/ds18b20/smarthome_ds18b20.py
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
