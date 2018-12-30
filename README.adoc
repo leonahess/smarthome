@@ -3,6 +3,8 @@
 The backbone of all scripts is a https://www.influxdata.com/[InfluxDB] instance running. All the Sensor scripts write to the https://www.influxdata.com/[InfluxDB] instance, 
 while the website or a https://grafana.com/[Grafana] instance ist used to visualize the data.
 
+Everything is supposed to run on python3.
+
 == website
 === A python Flask to display various stats about the setup
 
