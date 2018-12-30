@@ -1,16 +1,15 @@
 import datetime
 import Adafruit_DHT
-#import numpy
 import time
-from src.performance import Performance
+from app.performance import Performance
+from app import client
 
 
 class DHT22:
 
-    def __init__(self, pin, name, influx):
+    def __init__(self, pin, name):
         self.perf = Performance()
 
-        self.influx = influx
         self.AM2302 = Adafruit_DHT.AM2302
 
         self.pin = pin
@@ -29,7 +28,6 @@ class DHT22:
 
             self.write_to_database()
             time.sleep(3)
-
 
     def get_temperature(self):
 
@@ -96,6 +94,6 @@ class DHT22:
             json = self.assemble_json()
 
             try:
-                self.influx.client.write_points(json, protocol="json")
+                client.write_points(json, protocol="json")
             except Exception as e:
                 print(e)
