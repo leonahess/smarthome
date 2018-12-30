@@ -1,0 +1,7 @@
+influxdb
+flask
+jinja2
+Werkzeug
+Click
+ItsDangerous
+MarkupSafe
