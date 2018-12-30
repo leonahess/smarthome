@@ -1,0 +1,3 @@
+influxdb
+Adafruit_DHT
+w1thermsensor

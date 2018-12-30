@@ -1,0 +1,12 @@
+[Unit]
+Description=Reads various sensors and writes to InfluxDB
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pirate/PiFluxTemp/
+ExecStart=/usr/bin/python3 /home/pirate/PiFluxTemp/pifluxtemp.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
