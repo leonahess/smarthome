@@ -1,0 +1,21 @@
+= Various Python Scripts for a DIY Smarthome Solution
+
+TODO
+
+== website
+=== A python Flask to display various stats about the setup
+
+TODO
+
+== ds18b20
+=== A python script to read ds18b20 sensors connected to a RaspberryPi
+
+TODO
+
+== dht22
+=== A python script to read dht22 sensors connected to a RaspberryPi
+
+TODO
+
+== hs110
+=== A python script to read TP.Link HS110 smart wallplugs
