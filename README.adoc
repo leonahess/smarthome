@@ -1,6 +1,7 @@
-= Various Python Scripts for a DIY Smarthome Solution
+= Various Python scripts for a DIY smarthome solution
 
-TODO
+The backbone of all scripts is a https://www.influxdata.com/[InfluxDB] instance running. All the Sensor scripts write to the https://www.influxdata.com/[InfluxDB] instance, 
+while the website or a https://grafana.com/[Grafana] instance ist used to visualize the data.
 
 == website
 === A python Flask to display various stats about the setup
@@ -19,3 +20,5 @@ TODO
 
 == hs110
 === A python script to read TP.Link HS110 smart wallplugs
+
+TODO
