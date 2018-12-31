@@ -30,7 +30,9 @@ If you don't know the unique IDs of your DS18B20s you can run ``python3 get_ds18
 which will print them out for you.
 
 ``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
+
 ``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
+
 ``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
 
 #### Set Precision of the sensors
