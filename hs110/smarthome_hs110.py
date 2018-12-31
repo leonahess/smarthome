@@ -8,7 +8,7 @@ def main():
     threads = []
 
     for dev in Discover.discover():
-        threads.append(Thread(name=dev, target=HS110, args=dev))
+        threads.append(Thread(name=dev, target=HS110, args=(dev)))
 
     for thread in threads:
         thread.start()
