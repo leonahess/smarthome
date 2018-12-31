@@ -1,7 +1,7 @@
 from influxdb import InfluxDBClient
 import config
 
-client = InfluxDBClient(host=config.influx_database, port=config.influx_port, database=config.influx_database)
+client = InfluxDBClient(host=config.influx_ip, port=config.influx_port, database=config.influx_database)
 
 print("< connected to influx!")
 print("> checking if database '{}' exists ...".format(config.influx_database))
