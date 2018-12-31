@@ -48,6 +48,13 @@ Mode	 |   Resolution	|   Conversion time
 12 bits	 |   0.0625°C   |   750 ms
 ````
 
+#### Run the script
+
+````
+python3 smarthome_ds18b20.py
+````
+
+
 #### Autorun the Script on system startup
 
 ##### Docker
