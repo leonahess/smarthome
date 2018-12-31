@@ -1,4 +1,6 @@
-# PiFluxTemp
+# DHT22 submodule
+
+Currently untested
 
 ## Requirements
 
@@ -6,9 +8,7 @@
 
 ````
 influxdb
-w1thermsensor
 Adafruit_DHT
-numpy
 ````
 
 to install them run ``sudo pip3 install -r requirements.txt``
@@ -26,7 +26,7 @@ with at least a couple Gigs of RAM.
 
 ## Getting started
 
-Connect all your DS18B20s to the GPIO port ``4`` and one dht22 to a GPIO port of your choosing respectively.
+Connect one dht22 to a GPIO port of your choosing respectively.
 Also don't forget to enable the 1wire bus.
 
 #### Edit the config.json
@@ -34,85 +34,52 @@ Also don't forget to enable the 1wire bus.
 For the dht22 sensors add the gpio pin which you connected it to and
 add a name of your choosing.
 
-For the DS18B20 sensors add their unique id in the "id" field and add 
-name of your choosing.
+``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
 
-If you don't know the unique IDs of your DS18B20s you can run ``python3 get_ds18b20_ids.py``
-which will print them out for you.
+``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
 
-``"influx_server_ip": "<ip>"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
+``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
 
-
-``"ds18b20_precision": <9-12>`` sets the precision for the ds18b20 sensors between 9 and 12
-
-````
-Mode	 |   Resolution	|   Conversion time
--------------------------------------------
-9 bits	 |   0.5°C	|   93.75 ms
-10 bits	 |   0.25°C	|   187.5 ms
-11 bits	 |   0.125°C    |   375 ms
-12 bits	 |   0.0625°C   |   750 ms
-````
-
-Example config:
-````
-{
-  "dht22":
-  [
-    {
-      "pin": 17,
-      "name": "dht1"
-    },
-    {
-      "pin": 16,
-      "name": "dht2"
-    }
-  ],
-  "ds18b20":
-  [
-    {
-      "id": "011316e9c41b",
-      "name": "ds1"
-    },
-    {
-      "id": "01183108d9ff",
-      "name": "ds2"
-    },
-    {
-      "id": "021830b173ff",
-      "name": "ds3"
-    }
-  ],
-  "influx_server_ip": "localhost",
-  "ds18b20_precision": "12"
-}
-````
 
 #### Autorun the Script on system startup
 
-I supply a default unit file. For it to work you have to clone this repo into home directory of the user pi (``/home/pi/``).
-If you want to store the script in another location you just have to change the path to the ``pifluxtemp.service``.
+##### Docker
 
-Copy the unit file ``pifluxtemp.service`` to the correct directory:
+````
+docker build -t conatiner_name .
+docker run --net=host --restart always -d container_name
+````
 
-````sudo cp /home/pi/PifluxTemp/pifluxtemp.service /lib/systemd/system/````
+##### systemd
+
+I supply a default unit file. For it to work you have to clone this repo into home directory of the user pirate 
+(``/home/pirate/``).
+If you want to store the script in another location you just have to change the path to the 
+``smarthome_dht22.service``.
+
+Copy the unit file ``smarthome_dht22.service`` to the correct directory:
+
+````sudo cp smarthome_dht22.service /lib/systemd/system/````
 
 Then set the right permissions on that file:
 
-````sudo chmod 644 /lib/systemd/system/pifluxtemp.service````
+````sudo chmod 644 /lib/systemd/system/smarthome_dht22.service````
 
 Then enable the service:
 ````
 sudo systemctl daemon-reload
-sudo systemctl enable pifluxtemp.service
+sudo systemctl enable smarthome_dht22.service
 ````
 
-Then reboot:
-
-````sudo reboot````
-
 The script should now autostart on system startup.
+It should also try to restart if it crashes.
+
+you can start the script without rebooting with:
+
+````
+sudo systemctl start smarthome_dht22.service
+````
 
 If you want to check the status of the script:
 
-``sudo systemctl status pifluxtemp.service``
+``sudo systemctl status smarthome_dht22.service``
