@@ -1,13 +1,13 @@
 from pyHS100 import SmartPlug
 import datetime
 import time
+from app import client
 
 
 class HS110:
 
-    def __init__(self, ip, influx):
+    def __init__(self, ip):
 
-        self.influx = influx
         self.plug = SmartPlug(ip)
         self.name = self.plug.alias
 
@@ -67,6 +67,6 @@ class HS110:
     def write(self, jsons):
 
         try:
-            self.influx.client.write_points(jsons, protocol="json")
+            client.write_points(jsons, protocol="json")
         except Exception as e:
             print("Write exception: {}".format(e))
