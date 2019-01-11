@@ -3,10 +3,12 @@ Description=Reads various sensors and writes to InfluxDB
 After=network.target
 
 [Service]
+User=root
 Type=simple
-WorkingDirectory=/home/pirate/PiFluxTemp/
-ExecStart=/usr/bin/python3 /home/pirate/PiFluxTemp/pifluxtemp.py
-Restart=always
+WorkingDirectory=/home/pirate/smarthome/dth22
+ExecStart=/usr/bin/python3 /home/pirate/smarthome/dht22/smarthome_dht22.py
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
