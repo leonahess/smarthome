@@ -1,6 +1,7 @@
 import datetime
 import Adafruit_DHT
 import time
+import numpy
 from app.performance import Performance
 from app import client
 
