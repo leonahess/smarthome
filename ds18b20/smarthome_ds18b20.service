@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pirate/PiFluxTemp/
+WorkingDirectory=/home/pirate/smarthome/ds18b20/
 ExecStart=/usr/bin/python3 /home/pirate/smarthome/ds18b20/smarthome_ds18b20.py
 Restart=on-failure
 RestartSec=10

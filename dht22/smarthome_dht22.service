@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pirate/smarthome/dth22
+WorkingDirectory=/home/pirate/smarthome/dth22/
 ExecStart=/usr/bin/python3 /home/pirate/smarthome/dht22/smarthome_dht22.py
 Restart=no
 RestartSec=10
