@@ -3,7 +3,6 @@ Description=Reads various sensors and writes to InfluxDB
 After=network.target
 
 [Service]
-User=root
 Type=simple
 WorkingDirectory=/home/pirate/smarthome/dth22
 ExecStart=/usr/bin/python3 /home/pirate/smarthome/dht22/smarthome_dht22.py
