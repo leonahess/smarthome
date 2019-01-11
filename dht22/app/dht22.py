@@ -40,21 +40,21 @@ class DHT22:
             if 0 <= self.humidity < 100 and -30 < self.temp < 100:
             # print("dht read success, temp: {}, hum: {}".format(self.temp, self.humidity))
                self.write = True
-            # self.values.append({"temp": self.temp, "hum": self.humidity})
+            self.values.append({"temp": self.temp, "hum": self.humidity})
             # print(self.values)
 
-            # if len(self.values) > 10:
-                # self.values.pop(0)
-                # print("popped values")
+            if len(self.values) > 10:
+                self.values.pop(0)
+                print("popped values")
 
-            # x = self.eliminateNoise([x["temp"] for x in self.values])
-            # y = self.eliminateNoise([x["hum"] for x in self.values])
+            x = self.eliminateNoise([x["temp"] for x in self.values])
+            y = self.eliminateNoise([x["hum"] for x in self.values])
 
             # print(y, x)
 
-            # self.filtered_temperature.append(numpy.mean(x))
-            # self.filtered_humidity.append(numpy.mean(y))
-            # print(self.filtered_humidity, self.filtered_temperature)
+            self.filtered_temperature.append(numpy.mean(x))
+            self.filtered_humidity.append(numpy.mean(y))
+            print(self.filtered_humidity, self.filtered_temperature)
 
         else:
             print("dht read failed")
