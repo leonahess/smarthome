@@ -59,7 +59,7 @@ class DHT22:
         else:
             print("dht read failed")
             self.write = False
-    '''
+
     def eliminateNoise(self, values, std_factor=2):
         mean = numpy.mean(values)
         standard_deviation = numpy.std(values)
@@ -71,7 +71,6 @@ class DHT22:
         final_values = [element for element in final_values if element < mean + std_factor * standard_deviation]
 
         return final_values
-    '''
 
     def assemble_json(self):
         json = [{
