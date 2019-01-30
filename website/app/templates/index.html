@@ -13,7 +13,7 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
     <title>Cool Temperatures</title>
-    <link rel="icon" type="image/png" href="/app/static/favicon.png"/>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}"/>
     <meta http-equiv="refresh" content="5">
 </head>
 <body style="background-color: aquamarine">
@@ -22,7 +22,7 @@
     <h5>
         <a href="https://github.com/leonhess">
             <object style="pointer-events: none" width="24" height="24"
-                    data="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                    data="{{ url_for('static', filename='github.svg') }}"
                     type="image/svg+xml">
                 Get a modern Browser.
             </object>
@@ -36,7 +36,7 @@
     <div class="navbar-nav-scroll">
         <ul class="navbar-nav bd-navbar-nav flex-row">
             <li class="nav-item">
-                    <a class="nav-link active" href="/sensors">Sensoren</a>
+                <a class="nav-link active" href="/sensors">Sensoren</a>
 
 
             </li>
