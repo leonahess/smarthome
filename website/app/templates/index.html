@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom: 0; background-color: #cdfca9">
-    <h1>SmartFluxDash</h1>
+    <h1>Sensoren</h1>
 </div>
 
 <div class="container-fluid">
@@ -33,10 +33,32 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for sensor in query %}
+                {% for sensor in temp_result %}
                     <tr>
                         <td>{{ sensor.name }}</td>
                         <td>{{ sensor.temperature }}</td>
+                        <td>{{ sensor.time }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Luftfeuchtigkeit</th>
+                    <th>Zeit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sensor in hum_result %}
+                    <tr>
+                        <td>{{ sensor.name }}</td>
+                        <td>{{ sensor.humidity }}</td>
                         <td>{{ sensor.time }}</td>
                     </tr>
                 {% endfor %}
