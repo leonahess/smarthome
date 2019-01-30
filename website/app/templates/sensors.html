@@ -18,12 +18,10 @@
 </head>
 <body style="background-color: aquamarine">
 <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom: 0; background-color: #ff609a">
-    <h1>Index</h1>
+    <h1>Sensoren</h1>
     <h5>
         <a href="https://github.com/leonhess">
-            <object style="pointer-events: none" width="24" height="24"
-                    data="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-                    type="image/svg+xml">
+            <object style="pointer-events: none" width="24" height="24" data="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" type="image/svg+xml">
                 Get a modern Browser.
             </object>
         </a>
@@ -36,8 +34,10 @@
     <div class="navbar-nav-scroll">
         <ul class="navbar-nav bd-navbar-nav flex-row">
             <li class="nav-item">
+                <form action="/sensors" method="get">
                     <a class="nav-link active" href="/sensors">Sensoren</a>
 
+                </form>
 
             </li>
         </ul>
@@ -65,7 +65,50 @@
 
 <br/>
 <div class="container-fluid">
-
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-dark">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Temperatur</th>
+                    <th>Zeit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sensor in temp_result %}
+                    <tr>
+                        <td>{{ sensor.name }}</td>
+                        <td>{{ sensor.temperature }}°C</td>
+                        <td>{{ sensor.time }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-dark">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Luftfeuchtigkeit</th>
+                    <th>Zeit</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sensor in hum_result %}
+                    <tr>
+                        <td>{{ sensor.name }}</td>
+                        <td>{{ sensor.humidity }} %</td>
+                        <td>{{ sensor.time }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 <script>
