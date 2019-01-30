@@ -5,7 +5,7 @@ After=network.target influxdb.service
 [Service]
 Type=idle
 WorkingDirectory=/home/leonhess/PiFluxTempHtml/
-ExecStart=/usr/bin/python3 /home/leonhess/SmartFluxDash/smartfluxdash.py
+ExecStart=/usr/bin/python3 /home/leonhess/SmartFluxDash/smarthome_website.py
 Restart=on-failure
 RestartSec=10
 
