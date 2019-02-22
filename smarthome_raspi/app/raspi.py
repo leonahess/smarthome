@@ -32,7 +32,8 @@ class RaspiTemp:
         jsons.append({
             "measurement": "cpu",
             "tags": {
-                "host": config.hostname
+                "host": config.hostname,
+                "cpu": "cpu-total"
             },
             "fields": {
                 "temp": temp_cpu
