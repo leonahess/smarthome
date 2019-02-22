@@ -9,10 +9,9 @@ class RaspiTemp:
 
     def __init__(self):
         while True:
-            try:
-                self.write(self.read())
-            except Exception as e:
-                print("Current Stats Exception: {}".format(e))
+
+            self.write(self.read())
+
 
             time.sleep(10)
 
