@@ -10,7 +10,7 @@ database_list = client.get_list_database()
 smarthome_exists = False
 
 for s in range(0, len(database_list)):
-    if database_list[s]['name'] == 'telegraf':
+    if database_list[s]['name'] == config.influx_database:
         smarthome_exists = True
 
         print("< database 'telegraf' exists")

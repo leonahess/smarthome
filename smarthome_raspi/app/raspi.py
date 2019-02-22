@@ -92,6 +92,7 @@ class RaspiTemp:
 
         try:
             client.write_points(jsons, protocol="json")
+            print("wrote to db")
         except Exception as e:
             print("Write exception: {}".format(e))
 
