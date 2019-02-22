@@ -88,13 +88,13 @@ class RaspiTemp:
             "time": datetime.datetime.now()
         })
 
+        print(jsons)
         return jsons
 
     def write(self, jsons):
 
         try:
             client.write_points(jsons, protocol="json")
-            print("wrote to db")
         except Exception as e:
             print("Write exception: {}".format(e))
 
