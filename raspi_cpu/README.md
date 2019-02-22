@@ -1,0 +1,1 @@
+Reads Cpu temp and frequency of a raspi

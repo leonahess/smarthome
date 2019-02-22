@@ -26,8 +26,7 @@ class RaspiTemp:
         freq2_cpu = int(subprocess.run("cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_cur_freq", shell=True, capture_output=True).stdout)
         freq3_cpu = int(subprocess.run("cat /sys/devices/system/cpu/cpu3/cpufreq/scaling_cur_freq", shell=True, capture_output=True).stdout)
 
-        print(temp_cpu)
-        print(freq0_cpu)
+        now =datetime.datetime.now()
 
         jsons.append({
             "measurement": "cpu",
@@ -38,7 +37,7 @@ class RaspiTemp:
             "fields": {
                 "temp": temp_cpu
             },
-            "time": datetime.datetime.now()
+            "time": now
         })
 
         jsons.append({
@@ -50,7 +49,7 @@ class RaspiTemp:
             "fields": {
                 "freq": freq0_cpu
             },
-            "time": datetime.datetime.now()
+            "time": now
         })
 
         jsons.append({
@@ -62,7 +61,7 @@ class RaspiTemp:
             "fields": {
                 "freq": freq1_cpu
             },
-            "time": datetime.datetime.now()
+            "time": now
         })
 
         jsons.append({
@@ -74,7 +73,7 @@ class RaspiTemp:
             "fields": {
                 "freq": freq2_cpu
             },
-            "time": datetime.datetime.now()
+            "time": now
         })
 
         jsons.append({
@@ -86,10 +85,9 @@ class RaspiTemp:
             "fields": {
                 "freq": freq3_cpu
             },
-            "time": datetime.datetime.now()
+            "time": now
         })
 
-        print(jsons)
         return jsons
 
     def write(self, jsons):
