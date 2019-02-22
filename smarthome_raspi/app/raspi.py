@@ -20,12 +20,12 @@ class RaspiTemp:
         jsons = []
         result = subprocess.run("cat /sys/class/thermal/thermal_zone0/temp", shell=True)
         temp_cpu_raw = result.stdout
-        temp_cpu = float("{}.{}".format(temp_cpu_raw / 1000, (temp_cpu_raw/1000) % (temp_cpu_raw/100)))
+        temp_cpu = "{}.{}".format(temp_cpu_raw / 1000, (temp_cpu_raw/1000) % (temp_cpu_raw/100))
 
-        freq0_cpu = float(subprocess.run("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", shell=True).stdout)
-        freq1_cpu = float(subprocess.run("cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq", shell=True).stdout)
-        freq2_cpu = float(subprocess.run("cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_cur_freq", shell=True).stdout)
-        freq3_cpu = float(subprocess.run("cat /sys/devices/system/cpu/cpu3/cpufreq/scaling_cur_freq", shell=True).stdout)
+        freq0_cpu = subprocess.run("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", shell=True).stdout
+        freq1_cpu = subprocess.run("cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq", shell=True).stdout
+        freq2_cpu = subprocess.run("cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_cur_freq", shell=True).stdout
+        freq3_cpu = subprocess.run("cat /sys/devices/system/cpu/cpu3/cpufreq/scaling_cur_freq", shell=True).stdout
 
         print(temp_cpu_raw)
         print(temp_cpu)
