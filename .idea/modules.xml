@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/smarthome_hs110.iml" filepath="$PROJECT_DIR$/.idea/smarthome_hs110.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smarthome.iml" filepath="$PROJECT_DIR$/.idea/smarthome.iml" />
     </modules>
   </component>
 </project>

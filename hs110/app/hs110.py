@@ -59,7 +59,7 @@ class HS110:
                 "millivolt": realtime["voltage_mv"],
                 "wattstunden": realtime["total_wh"]
             },
-            "time": datetime.datetime.now()
+            "time": datetime.datetime.utcnow()
         })
 
         return jsons

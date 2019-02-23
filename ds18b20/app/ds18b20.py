@@ -45,7 +45,7 @@ class DS18B20:
                     "temperature": self.temp,
                     "cycle_time": self.perf.cycle_time
                 },
-            "time": datetime.datetime.now(),
+            "time": datetime.datetime.utcnow(),
             "time_precision": "s"
           }]
 

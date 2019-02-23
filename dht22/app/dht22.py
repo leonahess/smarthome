@@ -83,7 +83,7 @@ class DHT22:
                     "humidity": round(self.filtered_humidity.pop(), 3),
                     "cycle_time": self.perf.cycle_time
                 },
-            "time": datetime.datetime.now(),
+            "time": datetime.datetime.utcnow(),
             "time_precision": "s"
         }]
 
