@@ -1,7 +1,7 @@
 import datetime
 import Adafruit_DHT
 import time
-from statistics import mean
+import statistics
 from app.performance import Performance
 from app import client
 
@@ -53,8 +53,8 @@ class DHT22:
 
             # print(y, x)
 
-            self.filtered_temperature.append(mean(x))
-            self.filtered_humidity.append(mean(y))
+            self.filtered_temperature.append(statistics.mean(x))
+            self.filtered_humidity.append(statistics.mean(y))
             print(self.filtered_humidity, self.filtered_temperature)
 
         else:
@@ -62,8 +62,8 @@ class DHT22:
             self.write = False
 
     def eliminateNoise(self, values, std_factor=2):
-        mean = numpy.mean(values)
-        standard_deviation = numpy.std(values)
+        mean = statistics.mean(values)
+        standard_deviation = statistics.stdev(values)
 
         if standard_deviation == 0:
             return values
