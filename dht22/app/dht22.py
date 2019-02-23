@@ -74,16 +74,33 @@ class DHT22:
         return final_values
 
     def assemble_json(self):
+
+        utcnow = datetime.datetime.utcnow()
+
         json = [{
-            "measurement": self.name,
-            "tags": {},
+            "measurement": "temperature",
+            "tags": {
+                "name": self.name
+            },
             "fields":
                 {
                     "temperature": round(self.filtered_temperature.pop(), 3),
+                    "cycle_time": self.perf.cycle_time
+                },
+            "time": utcnow,
+            "time_precision": "s"
+        },
+        {
+            "measurement": "humidity",
+            "tags": {
+                "name": self.name
+            },
+            "fields":
+                {
                     "humidity": round(self.filtered_humidity.pop(), 3),
                     "cycle_time": self.perf.cycle_time
                 },
-            "time": datetime.datetime.utcnow(),
+            "time": utcnow,
             "time_precision": "s"
         }]
 

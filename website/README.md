@@ -2,7 +2,7 @@
 
 ````
 docker build -t conatiner_name .
-docker run --net=host --restart always -e "TZ=Europe/London" -d container_name
+docker run --net=host --restart always -d --name=website container_name
 ````
 
 ## Autorun the Script on system startup with systemd

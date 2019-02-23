@@ -26,7 +26,7 @@ python3 smarthome_hs110.py
 
 ````
 docker build -t conatiner_name .
-docker run --net=host --restart always -e "TZ=Europe/Berlin" -d container_name
+docker run --net=host --restart always -d --name=hs110 container_name
 ````
 
 ##### systemd

@@ -35,12 +35,12 @@ class HS110:
             daytime = datetime.datetime(int(year), int(month), int(day), 0, 0, 0, 0)
 
             jsons.append({
-                "measurement": "HS110",
+                "measurement": "power",
                 "tags": {
                     "name": self.name
                 },
                 "fields": {
-                    "tagesdurchschnitt": daily_avg[day]
+                    "daily_average": daily_avg[day]
                 },
                 "time": daytime
 
@@ -49,7 +49,7 @@ class HS110:
             x += 1
 
         jsons.append({
-            "measurement": "HS110",
+            "measurement": "power",
             "tags": {
                 "name": self.name
             },
@@ -57,7 +57,7 @@ class HS110:
                 "milliwatt": realtime["power_mw"],
                 "milliampere": realtime["current_ma"],
                 "millivolt": realtime["voltage_mv"],
-                "wattstunden": realtime["total_wh"]
+                "watthours": realtime["total_wh"]
             },
             "time": datetime.datetime.utcnow()
         })

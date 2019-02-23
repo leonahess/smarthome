@@ -32,13 +32,12 @@ class DS18B20:
 
         self.id = self.sensor.id
 
-        #print("ID: {}, temp: {}".format(self.id, self.temp))
-
     def assemble_json(self):
         json = [{
-            "measurement": self.name,
+            "measurement": "temperature",
             "tags": {
-                "id": self.id
+                "id": self.id,
+                "name": self.name
             },
             "fields":
                 {
