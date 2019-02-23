@@ -5,6 +5,6 @@ ADD . .
 WORKDIR .
 
 RUN pip3 install -r requirements.txt
-RUN apt-get install python3-numpy
+RUN apk add py-numpy
 
 CMD [ "python3", "smarthome_dht22.py" ]
