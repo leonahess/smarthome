@@ -63,7 +63,7 @@ python3 smarthome_ds18b20.py
 
 ````
 docker build -t conatiner_name .
-docker run --net=host --restart always -d container_name
+docker run --net=host --restart always -d --privileged -e "TZ=Europe/Berlin" container_name
 ````
 
 ##### systemd
