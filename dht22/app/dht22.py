@@ -1,7 +1,7 @@
 import datetime
 import Adafruit_DHT
 import time
-import numpy
+from statistics import mean
 from app.performance import Performance
 from app import client
 
@@ -53,8 +53,8 @@ class DHT22:
 
             # print(y, x)
 
-            self.filtered_temperature.append(numpy.mean(x))
-            self.filtered_humidity.append(numpy.mean(y))
+            self.filtered_temperature.append(mean(x))
+            self.filtered_humidity.append(mean(y))
             print(self.filtered_humidity, self.filtered_temperature)
 
         else:
