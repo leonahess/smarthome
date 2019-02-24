@@ -16,34 +16,34 @@ a|
 - flask
 - MarkupSafe
 - python-dateutil
-| working
+| tested on Pi3B+
 | probably broken
 
 |ds18b20
 a|
 - influxdb
 - w1thermsensor
-| working
+| tested on PiZero
 | probably broken
 
 |dht22
 a|
 - influxdb
 - Adafruit_DHT
-| working
+| tested on PiZero
 | probably broken
 
 |hs110
 a|
 - influxdb
 - pyHS100
-| working
+| tested on Pi3B+
 | probably broken
 
 |raspi_cpu
 a|
 - influxdb
-| working
+| only works on Pi3B+
 | doesnt exist
 |===
 
@@ -183,6 +183,7 @@ which will print them out for you.
 
 ....
 docker build -t ds18b20 .
+
 docker run --restart always -d --privileged --name=ds18b20 ds18b20
 ....
 
@@ -279,11 +280,27 @@ If you want to check the status of the script:
 == hs110
 === reads TP.Link HS110 smart wallplugs
 ==== Getting started
+setup all you ``HS110``'s with the Kasa App.
+
 ==== Config
 ==== Docker
+``cd`` into the ``hs110`` directory, then run:
+
+....
+docker build -t hs110 .
+
+docker run --net=host --restart always -d --name=hs110 hs110
+....
 
 == raspi_cpu
 === reads the temperature and cpu frequency of a raspberry pi
 ==== Getting started
 ==== Config
 ==== Docker
+``cd`` into the ``raspi_cpu`` directory, then run:
+
+....
+docker build -t raspi_cpu .
+
+docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
+....
