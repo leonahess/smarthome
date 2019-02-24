@@ -48,8 +48,8 @@ class DHT22:
                 self.values.pop(0)
                 print("popped values")
 
-            x = self.eliminateNoise([x["temp"] for x in self.values])
-            y = self.eliminateNoise([x["hum"] for x in self.values])
+            x = self.eliminate_noise([x["temp"] for x in self.values])
+            y = self.eliminate_noise([x["hum"] for x in self.values])
 
             # print(y, x)
 
