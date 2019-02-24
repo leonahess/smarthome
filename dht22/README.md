@@ -47,7 +47,7 @@ add a name of your choosing.
 
 ````
 docker build -t conatiner_name .
-docker run --net=host --restart always -d --name=dht22 --privileged container_name
+docker run --restart always -d --name=dht22 --privileged container_name
 ````
 
 ##### systemd
