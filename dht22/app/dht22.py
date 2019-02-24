@@ -61,9 +61,12 @@ class DHT22:
             print("dht read failed")
             self.write = False
 
-    def eliminateNoise(self, values, std_factor=2):
+    def eliminate_noise(self, values, std_factor=2):
         mean = statistics.mean(values)
-        standard_deviation = statistics.stdev(values)
+        if len(values) < 2:
+            standard_deviation = statistics.stdev(values)
+        else:
+            standard_deviation = 1
 
         if standard_deviation == 0:
             return values
