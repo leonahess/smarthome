@@ -63,7 +63,7 @@ class DHT22:
 
     def eliminate_noise(self, values, std_factor=2):
         mean = statistics.mean(values)
-        if len(values) < 2:
+        if len(values) > 1:
             standard_deviation = statistics.stdev(values)
         else:
             standard_deviation = 1
