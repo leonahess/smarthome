@@ -1,6 +1,6 @@
 = Various Python scripts for a DIY smarthome solution
 
-The backbone of all scripts is a https://www.influxdata.com/[InfluxDB] instance running. All the Sensor scripts write to the https://www.influxdata.com/[InfluxDB] instance, 
+The backbone of all scripts is a https://www.influxdata.com/[InfluxDB] instance running. All the Sensor scripts write to the https://www.influxdata.com/[InfluxDB] instance,
 while the website or a https://grafana.com/[Grafana] instance ist used to visualize the data.
 
 Everything is supposed to run on python3.7, most things should run with older python3 versions, but ``raspi_cpu``
@@ -102,6 +102,19 @@ runs the default config
 Start the Influx Container above, then run:
 ....
 docker exec -it influxdb influx
+....
+
+== Telegraf
+Quickly get a Docker container up and running:
+
+``cd`` into the ``configs`` directory and run:
+....
+docker run \
+  -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
+  --restart always \
+  --name=telegraf \
+  -d \
+  telegraf
 ....
 
 == Grafana
