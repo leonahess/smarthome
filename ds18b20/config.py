@@ -10,7 +10,7 @@ sensors = [
     },
     {
       "id": "0113170ac3ed",
-      "name": "front_third"
+      "name": "front_radiator"
     },
     {
       "id": "021830b173ff",
