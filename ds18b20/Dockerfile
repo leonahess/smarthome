@@ -4,7 +4,6 @@ ADD . .
 
 WORKDIR .
 
-RUN pip3 install w1thermsensor
-RUN pip3 install influxdb
+RUN pip3 install -r requirements.txt
 
 CMD [ "python3", "smarthome_ds18b20.py" ]
