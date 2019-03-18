@@ -1,18 +1,6 @@
 
 sensors = [
     {
-      "id": "011316e9c41b",
-      "name": "ds1"
-    },
-    {
-      "id": "01183108d9ff",
-      "name": "ds2"
-    },
-    {
-      "id": "021830b173ff",
-      "name": "ds3"
-    },
-    {
       "id": "01131657bc73",
       "name": "front_window_outside"
     },
@@ -23,6 +11,18 @@ sensors = [
     {
       "id": "0113170ac3ed",
       "name": "front_third"
+    },
+    {
+      "id": "021830b173ff",
+      "name": "front_third_inside"
+    },
+    {
+      "id": "011316f4161f",
+      "name": "desk"
+    },
+    {
+      "id": "011316e9c41b",
+      "name": "back_window_outside"
     }
   ]
 
