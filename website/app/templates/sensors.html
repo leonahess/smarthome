@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
     <title>Cool Temperatures</title>
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}"/>
     <meta http-equiv="refresh" content="5">
@@ -68,11 +62,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-hover table-dark">
+            <table class="table table-hover table-dark display" id="">
                 <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
-                    <th>Temperatur</th>
+                    <th>Temperatur [°C]</th>
                     <th>Zeit</th>
                 </tr>
                 </thead>
@@ -80,7 +74,7 @@
                 {% for sensor in temp_result %}
                     <tr>
                         <td>{{ sensor.name }}</td>
-                        <td>{{ sensor.temperature }}°C</td>
+                        <td>{{ sensor.temperature }}</td>
                         <td>{{ sensor.time }}</td>
                     </tr>
                 {% endfor %}
@@ -90,11 +84,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-hover table-dark">
+            <table class="table table-hover table-dark display" id="">
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Luftfeuchtigkeit</th>
+                    <th>Luftfeuchtigkeit [%]</th>
                     <th>Zeit</th>
                 </tr>
                 </thead>
@@ -102,7 +96,7 @@
                 {% for sensor in hum_result %}
                     <tr>
                         <td>{{ sensor.name }}</td>
-                        <td>{{ sensor.humidity }}%</td>
+                        <td>{{ sensor.humidity }}</td>
                         <td>{{ sensor.time }}</td>
                     </tr>
                 {% endfor %}
@@ -111,10 +105,24 @@
         </div>
     </div>
 </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+
 </body>
 <script>
+    $(document).ready(function() {
+    $('table.display').DataTable({
+        "order": [[1, "asc"]],
+        "paging": false,
+        "info": false
+    });
+});
+</script>
+<script>
     $(function () {
-        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover();
         $('.popover-dismiss').popover({
             trigger: 'focus'
         })
