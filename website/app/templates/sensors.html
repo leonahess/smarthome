@@ -8,7 +8,7 @@
 
     <title>Cool Temperatures</title>
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}"/>
-    <meta http-equiv="refresh" content="5">
+    <!-- <meta http-equiv="refresh" content="5"> -->
 </head>
 <body style="background-color: aquamarine">
 <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom: 0; background-color: #ff609a">
@@ -115,9 +115,10 @@
     $(document).ready(function() {
     $('table.display').DataTable({
         "order": [[1, "asc"]],
+        "lengthMenu": [[1, 5, 10, -1], [1, 5, 10, "All"]],
         "paging": false,
         "info": false,
-        "searching": false
+        "searching": true
     });
 });
 </script>
