@@ -18,7 +18,7 @@ sensors = [
     },
     {
       "id": "011316f4161f",
-      "name": "desk"
+      "name": "back_radiator"
     },
     {
       "id": "011316e9c41b",
