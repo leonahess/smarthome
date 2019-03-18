@@ -20,27 +20,27 @@ def table():
 
         if sensor['temp']:
             measurement = sensor['name']
-            query = influx.query("SELECT temperature,{} FROM temperature ORDER by time DESC LIMIT 1".format(measurement))
+            query = influx.query("""SELECT temperature FROM temperature WHERE "name" = '{}' ORDER by time DESC LIMIT 1""".format(measurement))
             raw = query.get_points()
             for res in raw:
                 time = dateutil.parser.parse(res['time'])
                 temp_result.append(
                     {
                         "temperature": round(res['temperature'], 2),
-                        "time": "{}:{}.{}".format(time.hour, time.minute, time.second),
+                        "time": "{}:{}.{}".format(time.hour+1, time.minute, time.second),
                         "name": sensor['nickname']
                    }
                 )
 
         if sensor['hum']:
-            query2 = influx.query("SELECT humidity,{} FROM humidity ORDER by time DESC LIMIT 1".format(measurement))
+            query2 = influx.query("""SELECT humidity FROM humidity WHERE "name" = '{}' ORDER by time DESC LIMIT 1""".format(measurement))
             raw2 = query2.get_points()
             for res2 in raw2:
                 time = dateutil.parser.parse(res2['time'])
                 hum_result.append(
                     {
                         "humidity": round(res2['humidity'], 2),
-                        "time": "{}:{}.{}".format(time.hour, time.minute, time.second),
+                        "time": "{}:{}.{}".format(time.hour+1, time.minute, time.second),
                         "name": sensor['nickname']
                     }
                 )

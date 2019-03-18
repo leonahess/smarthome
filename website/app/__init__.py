@@ -58,6 +58,12 @@ sensors = [
         "hum": True,
         "name": "window_back",
         "nickname": "Fensterbrett hinten"
+    },
+    {
+        "temp": True,
+        "hum": True,
+        "name": "desk",
+        "nickname": "Schreibtisch"
     }
 ]
 
