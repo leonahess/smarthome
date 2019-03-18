@@ -14,7 +14,7 @@ sensors = [
     },
     {
       "id": "021830b173ff",
-      "name": "front_third_inside"
+      "name": "back_window_inside"
     },
     {
       "id": "011316f4161f",
