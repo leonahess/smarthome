@@ -10,21 +10,21 @@ sensors = [
         "hum": False,
         "id": "01131657bc73",
         "name": "front_window_outside",
-        "nickname": "Draußen"
+        "nickname": "Draußen vorne"
     },
     {
         "temp": True,
         "hum": False,
         "id": "011830cd8dff",
         "name": "front_window_inside",
-        "nickname": "vorderes Fensterbrett"
+        "nickname": "Fensterbrett vorne"
     },
     {
         "temp": True,
         "hum": False,
         "id": "0113170ac3ed",
         "name": "front_radiator",
-        "nickname": "vordere Jalousie"
+        "nickname": "Heizung vorne"
     },
     {
         "temp": True,
@@ -36,19 +36,22 @@ sensors = [
         "temp": True,
         "hum": False,
         "id": "021830b173ff",
-        "name": "back_window_inside"
+        "name": "back_window_inside",
+        "nickname": "Fensterbrett hinten"
     },
     {
         "temp": True,
         "hum": False,
         "id": "011316f4161f",
-        "name": "back_radiator"
+        "name": "back_radiator",
+        "nickname": "Heizung hinten"
     },
     {
         "temp": True,
         "hum": False,
         "id": "011316e9c41b",
-        "name": "back_window_outside"
+        "name": "back_window_outside",
+        "nickname": "Draußen hinten"
     },
     {
         "temp": True,
