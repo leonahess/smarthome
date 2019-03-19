@@ -61,77 +61,83 @@ def graphs():
 
     front_outer_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'front_window_outside') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
     back_outer_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'back_window_outside') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
     front_board_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'front_window_inside') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
     back_board_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'back_window_inside') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
     back_radiator_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'back_radiator') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
     front_radiator_query = influx.query(
         """SELECT mean("temperature") FROM "temperature" WHERE ("name" = 'front_radiator') AND (time > now() - 1d) 
-        GROUP BY time(10m)""")
+        GROUP BY time(10m)fill(0)""")
 
     for res in front_outer_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        front_outer.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            front_outer.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
     for res in back_outer_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        back_outer.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            back_outer.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
     for res in front_board_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        front_board.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            front_board.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
     for res in back_board_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        back_board.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            back_board.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
     for res in front_radiator_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        front_radiator.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            front_radiator.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
     for res in back_radiator_query.get_points():
         time = dateutil.parser.parse(res['time'])
-        back_radiator.append(
-            {
-                "temperature": round(res['mean'], 2),
-                "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
-                "name": "front_window_outside"
-            }
-        )
+        if res['mean'] is not None:
+            back_radiator.append(
+                {
+                    "temperature": round(res['mean'], 2),
+                    "time": res['time'],
+                    "name": "front_window_outside"
+                }
+            )
 
     return render_template('graphs.html', front_outer=front_outer, back_outer=back_outer, front_board=front_board,
                            back_board=back_board, front_radiator=front_radiator, back_radiator=back_radiator)

@@ -75,25 +75,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-xl-4">
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Vorne</h1>
+                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (front_outer | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (front_outer | last).temperature }}°C</h1>
                 </div>
             </div>
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Hinten</h1>
+                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (back_outer | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (back_outer | last).temperature }}°C</h1>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-xl-8">
             <h5>Tagesverlauf</h5>
             <canvas id="chart" width="600" height="200"></canvas>
             <script>
@@ -130,6 +130,9 @@
                             }]
                     },
                     options: {
+                        animation: {
+                            duration: 0
+                        },
                         tooltips: {
                             mode: 'x',
                             intersect: false
@@ -153,25 +156,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-xl-4">
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Vorne</h1>
+                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (front_board | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (front_board | last).temperature }}°C</h1>
                 </div>
             </div>
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Hinten</h1>
+                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (back_board | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (back_board | last).temperature }}°C</h1>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-xl-8">
             <h5>Tagesverlauf</h5>
             <canvas id="board" width="600" height="200"></canvas>
             <script>
@@ -206,6 +209,9 @@
                             }]
                     },
                     options: {
+                        animation: {
+                            duration: 0
+                        },
                         tooltips: {
                             mode: 'x',
                             intersect: false
@@ -229,25 +235,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-xl-4">
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Vorne</h1>
+                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (front_radiator | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (front_radiator | last).temperature }}°C</h1>
                 </div>
             </div>
             <div class="row h-50">
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">Hinten</h1>
+                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
                 </div>
                 <div class="col-sm-6">
-                    <h1 style="font-size: 75px">{{ (back_radiator | last).temperature }}°C</h1>
+                    <h1 style="font-size: 60px">{{ (back_radiator | last).temperature }}°C</h1>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-xl-8">
             <h5>Tagesverlauf</h5>
             <canvas id="radiator" width="600" height="200"></canvas>
             <script>
@@ -282,6 +288,9 @@
                             }]
                     },
                     options: {
+                        animation: {
+                            duration: 0
+                        },
                         tooltips: {
                             mode: 'x',
                             intersect: false,
