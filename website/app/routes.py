@@ -84,7 +84,7 @@ def graphs():
             front_outer.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
@@ -94,7 +94,7 @@ def graphs():
             back_outer.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
@@ -104,7 +104,7 @@ def graphs():
             front_board.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
@@ -114,7 +114,7 @@ def graphs():
             back_board.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
@@ -124,7 +124,7 @@ def graphs():
             front_radiator.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
@@ -134,7 +134,7 @@ def graphs():
             back_radiator.append(
                 {
                     "temperature": round(res['mean'], 2),
-                    "time": "{}:{}.{}".format(time.hour + 1, time.minute, time.second),
+                    "time": "{}:{}".format(time.hour + 1, time.minute),
                     "name": "front_window_outside"
                 }
             )
