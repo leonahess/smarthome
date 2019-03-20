@@ -68,31 +68,15 @@
 
 <!-- BODY -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12" style="background-color: #cfffe5">
-            <h1>Außentemperatur</h1>
+
+    <div class="row" style="background-color: #cfffe5">
+        <div class="col-md-12 btn" data-toggle="collapse" data-target="#outside_col" aria-expanded="false"
+             aria-controls="outside_col">
+            <h1>Außentemperatur [v: {{ (front_outer | last).temperature }}°C | h: {{ (back_outer | last).temperature }}°C]</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-4">
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (front_outer | last).temperature }}°C</h1>
-                </div>
-            </div>
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (back_outer | last).temperature }}°C</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8">
+    <div class="row collapse" id="outside_col">
+        <div class="col-xl-12">
             <h5>Tagesverlauf</h5>
             <canvas id="chart" width="600" height="200"></canvas>
             <script>
@@ -149,31 +133,15 @@
 
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12" style="background-color: #cfffe5">
-            <h1>Fensterbrett</h1>
+    <div class="row" style="background-color: #cfffe5">
+        <div class="col-md-12 btn" data-toggle="collapse" data-target="#board_col" aria-expanded="false"
+             aria-controls="board_col">
+            <h1>Fensterbrett [v: {{ (front_board | last).temperature }}°C |
+                h: {{ (back_board | last).temperature }}°C]</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-4">
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (front_board | last).temperature }}°C</h1>
-                </div>
-            </div>
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (back_board | last).temperature }}°C</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8">
+    <div class="row collapse" id="board_col">
+        <div class="col-xl-12">
             <h5>Tagesverlauf</h5>
             <canvas id="board" width="600" height="200"></canvas>
             <script>
@@ -229,30 +197,14 @@
         </div>
     </div>
     <div class="row" style="background-color: #cfffe5">
-        <div class="col-md-12">
-            <h1>Heizung</h1>
+        <div class="col-md-12 btn" data-toggle="collapse" data-target="#radiator_col" aria-expanded="false"
+             aria-controls="radiator_col">
+            <h1>Heizung [v: {{ (front_radiator | last).temperature }}°C |
+                h: {{ (back_radiator | last).temperature }}°C]</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-4">
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Vorne</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (front_radiator | last).temperature }}°C</h1>
-                </div>
-            </div>
-            <div class="row h-50">
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px; text-align: right">Hinten</h1>
-                </div>
-                <div class="col-sm-6">
-                    <h1 style="font-size: 60px">{{ (back_radiator | last).temperature }}°C</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8">
+    <div class="row collapse" id="radiator_col">
+        <div class="col-xl-12">
             <h5>Tagesverlauf</h5>
             <canvas id="radiator" width="600" height="200"></canvas>
             <script>
