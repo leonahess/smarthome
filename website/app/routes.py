@@ -2,12 +2,42 @@ from flask import render_template
 from app import app
 from app import influx
 from app import sensors
+from flask import Markup
+from flask import request
+from markdown import markdown
+
 import dateutil.parser
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+
+    return render_template('login.html')
+
+
+@app.route('/add')
+def add():
+    return render_template('add_md.html')
+
+
+@app.route('/add_2', methods=['POST'])
+def post_add():
+    title = request.form['title']
+    date = request.form['date']
+    body = request.form['body']
+
+    with open("app/static/blog_entries/{}_{}.md".format(date, title), "w+") as file:
+        file.write(body)
+        file.close()
+
+    return render_template('index.html')
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    with open("app/static/Nudelsalat.md", mode="r", encoding="utf-8") as file:
+        content = Markup(markdown(file.read()))
+    return render_template('index.html', **locals())
 
 
 @app.route('/sensors')
@@ -19,10 +49,10 @@ def table():
 
         if sensor['temp']:
             measurement = sensor['name']
-            query = influx.query(
+            query_result = influx.query(
                 """SELECT temperature FROM temperature WHERE "name" = '{}' ORDER by time DESC LIMIT 1""".format(
                     measurement))
-            raw = query.get_points()
+            raw = query_result.get_points()
             for res in raw:
                 time = dateutil.parser.parse(res['time'])
                 temp_result.append(
@@ -34,9 +64,9 @@ def table():
                 )
 
         if sensor['hum']:
-            query2 = influx.query(
+            query_result_2 = influx.query(
                 """SELECT humidity FROM humidity WHERE "name" = '{}' ORDER by time DESC LIMIT 1""".format(measurement))
-            raw2 = query2.get_points()
+            raw2 = query_result_2.get_points()
             for res2 in raw2:
                 time = dateutil.parser.parse(res2['time'])
                 hum_result.append(
@@ -47,7 +77,7 @@ def table():
                     }
                 )
 
-    return render_template('sensors.html', temp_result=temp_result, hum_result=hum_result)
+    return render_template('sensors.html', **locals())
 
 
 def parse(query_result):
@@ -91,7 +121,4 @@ def graphs():
     power_server = query("milliwatt", "power", "Server", 1000)
     power_small = query("milliwatt", "power", "Kleinteile", 1000)
 
-    return render_template('graphs.html', front_outer=front_outer, back_outer=back_outer, front_board=front_board,
-                           back_board=back_board, front_radiator=front_radiator, back_radiator=back_radiator, desk=desk,
-                           back_board_hum=back_board_hum, front_board_hum=front_board_hum, desk_hum=desk_hum,
-                           power_computer=power_computer, power_server=power_server, power_small=power_small)
+    return render_template('graphs.html', **locals())
