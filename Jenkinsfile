@@ -1,4 +1,8 @@
-node {
+pipeline {
+  agent {
+    any
+  }
+  stages {
   stage("Environment") {
     sh "git --version"
     sh "printenv"
@@ -41,4 +45,5 @@ node {
     sh "docker rmi ds18b20"
     sh "docker rmi hs110"
   }
+}
 }
