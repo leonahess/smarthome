@@ -1,10 +1,9 @@
 pipeline {
-  agent none
+  agent docker
   stages {
   stage("Environment") {
     steps {
     sh "git --version"
-    sh "printenv"
   }
 }
   stage("Build Containers") {
