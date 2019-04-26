@@ -1,7 +1,4 @@
 node {
-  stage("Checkout") {
-    Checkout scm
-  }
   stage("Environment") {
     sh "git --version"
     echo "Branch: ${env.BRANCH_NAME}"
