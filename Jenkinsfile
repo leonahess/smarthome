@@ -1,12 +1,12 @@
 pipeline {
-  agent {
-    any
-  }
+  agent none
   stages {
   stage("Environment") {
+    steps {
     sh "git --version"
     sh "printenv"
   }
+}
   stage("Build Containers") {
     steps {
       parallel (
@@ -41,9 +41,11 @@ pipeline {
     }
   }
   stage("Cleanung"){
+    steps {
     sh "docker rmi dht22"
     sh "docker rmi ds18b20"
     sh "docker rmi hs110"
   }
+}
 }
 }
