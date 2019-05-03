@@ -6,6 +6,10 @@ while the website or a https://grafana.com/[Grafana] instance ist used to visual
 Everything is supposed to run on python3.7, most things should run with older python3 versions, but ``raspi_cpu``
 requires python3.7.
 
+:toc:
+
+== Overview
+
 .Script status
 |===
 |Name |required python modules |Dockerfile | Unit File
@@ -137,9 +141,10 @@ docker run \
   grafana/grafana
 ....
 
-
 == website
-=== A python Flask to display various stats about the setup
+A python Flask to display various stats about the setup
+
+==== Getting started
 
 - Currently only displays temperature and humidity from the ``ds18b20`` and ``dht22`` scripts.
 - Things to implement:
@@ -147,8 +152,11 @@ docker run \
 2. some sort of graphs
 3. admin panel to change what is displayed
 
+==== Docker
+
 == ds18b20
-=== reads ds18b20 sensors connected to a RaspberryPi
+reads ds18b20 sensors connected to a RaspberryPi
+
 ==== Getting started
 Connect all your DS18B20s to the GPIO port ``4``.
 Also don't forget to enable the 1wire bus (``sudo raspi-config``).
@@ -209,11 +217,15 @@ If you want to store the script in another location you just have to change the 
 
 Copy the unit file ``smarthome_ds18b20.service`` to the correct directory:
 
-````sudo cp smarthome_ds18b20.service /lib/systemd/system/````
+````
+sudo cp smarthome_ds18b20.service /lib/systemd/system/
+````
 
 Then set the right permissions on that file:
 
-````sudo chmod 644 /lib/systemd/system/smarthome_ds18b20.service````
+````
+sudo chmod 644 /lib/systemd/system/smarthome_ds18b20.service
+````
 
 Then enable the service:
 ````
@@ -236,7 +248,8 @@ If you want to check the status of the script:
 
 
 == dht22
-=== reads dht22 sensors connected to a RaspberryPi
+Reads dht22 sensors connected to a RaspberryPi
+
 ==== Getting started
 Connect one dht22 to a GPIO port of your choosing respectively.
 Also don't forget to enable the 1wire bus (``sudo raspi-config``).
@@ -266,11 +279,15 @@ If you want to store the script in another location you just have to change the 
 
 Copy the unit file ``smarthome_dht22.service`` to the correct directory:
 
-````sudo cp smarthome_dht22.service /lib/systemd/system/````
+````
+sudo cp smarthome_dht22.service /lib/systemd/system/
+````
 
 Then set the right permissions on that file:
 
-````sudo chmod 644 /lib/systemd/system/smarthome_dht22.service````
+````
+sudo chmod 644 /lib/systemd/system/smarthome_dht22.service
+````
 
 Then enable the service:
 ````
@@ -292,7 +309,8 @@ If you want to check the status of the script:
 ``sudo systemctl status smarthome_dht22.service``
 
 == hs110
-=== reads TP.Link HS110 smart wallplugs
+Reads TP.Link HS110 smart wallplugs
+
 ==== Getting started
 setup all you ``HS110``'s with the Kasa App.
 
@@ -307,7 +325,8 @@ docker run --net=host --restart always -d --name=hs110 hs110
 ....
 
 == raspi_cpu
-=== reads the temperature and cpu frequency of a raspberry pi
+Reads the temperature and cpu frequency of a raspberry pi
+
 ==== Getting started
 ==== Config
 ==== Docker
@@ -318,3 +337,6 @@ docker build -t raspi_cpu .
 
 docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
 ....
+
+== Jenkinsfile
+Jenkins Pipeline for building the Dockerimages and pushing to private Registry

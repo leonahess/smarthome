@@ -37,7 +37,9 @@ pipeline {
           }
           steps {
             sh "docker tag hs110 fx8350:5000/hs110:latest"
+            sh "docker tag hs110 leonhess/hs110:latest"
             sh "docker push fx8350:5000/hs110:latest"
+            sh "docker push leonhess/hs110:latest"
           }
         }
         stage('Tag DHT22') {
@@ -46,7 +48,9 @@ pipeline {
           }
           steps {
             sh "docker tag dht22 fx8350:5000/dht22:latest"
+            sh "docker tag dht22 leonhess/dht22:latest"
             sh "docker push fx8350:5000/dht22:latest"
+            sh "docker push leonhess/dht22:latest"
           }
         }
         stage('Tag DS18B20') {
@@ -55,7 +59,9 @@ pipeline {
           }
           steps {
             sh "docker tag ds18b20 fx8350:5000/ds18b20:latest"
+            sh "docker tag ds18b20 leonhess/ds18b20:latest"
             sh "docker push fx8350:5000/ds18b20:latest"
+            sh "docker push leonhess/ds18b20:latest"
           }
         }
       }
@@ -67,7 +73,8 @@ pipeline {
             label "Pi_Zero"
           }
           steps {
-            sh "docker rmi fx8359:5000/hs110"
+            sh "docker rmi fx8350:5000/hs110"
+            sh "docker rmi leonhess/hs110"
           }
         }
         stage('Cleanup DS18B20') {
@@ -75,7 +82,8 @@ pipeline {
             label "Pi_Zero"
           }
           steps {
-            sh "docker rmi fx8359:5000/ds18b20"
+            sh "docker rmi fx8350:5000/ds18b20"
+            sh "docker rmi leonhess/ds18b20"
           }
         }
         stage('Cleanup DHT22') {
@@ -83,7 +91,8 @@ pipeline {
             label "Pi_Zero"
           }
           steps {
-            sh "docker rmi fx8359:5000/dht22"
+            sh "docker rmi fx8350:5000/dht22"
+            sh "docker rmi leonhess/dht22"
           }
         }
       }
