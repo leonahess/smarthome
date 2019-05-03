@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-  stage("Tag & Push to Registry"){
+    stage("Tag & Push to Registry"){
       parallel{
         stage('Tag HS110') {
           agent {
@@ -60,30 +60,31 @@ pipeline {
         }
       }
     }
-  stage("Cleanup"){
-    parallel {
-      stage('Cleanup HS110') {
-        agent {
-          label "Pi_Zero"
+    stage("Cleanup"){
+      parallel {
+        stage('Cleanup HS110') {
+          agent {
+            label "Pi_Zero"
+          }
+          steps {
+            sh "docker rmi hs110"
+          }
         }
-        steps {
-          sh "docker rmi hs110"
+        stage('Cleanup DS18B20') {
+          agent {
+            label "Pi_Zero"
+          }
+          steps {
+            sh "docker rmi ds18b20"
+          }
         }
-      }
-      stage('Cleanup DS18B20') {
-        agent {
-          label "Pi_Zero"
-        }
-        steps {
-          sh "docker rmi ds18b20"
-        }
-      }
-      stage('Cleanup DHT22') {
-        agent {
-          label "Pi_Zero"
-        }
-        steps {
-          sh "docker rmi dht22"
+        stage('Cleanup DHT22') {
+          agent {
+            label "Pi_Zero"
+          }
+          steps {
+            sh "docker rmi dht22"
+          }
         }
       }
     }
