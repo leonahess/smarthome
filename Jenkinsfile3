@@ -1,7 +1,4 @@
 node{
-  stage("checkout") {
-    Checkout scm
-  }
   stage("Build Containers") {
     steps {
       parallel (
