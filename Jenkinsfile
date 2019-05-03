@@ -95,7 +95,9 @@ pipeline {
             label "Pi_3"
           }
           steps {
-            sh "docker push leonhess/hs110:latest"
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+              sh "docker push leonhess/hs110:latest"
+            }
           }
         }
         stage('Push DHT22 DockerHub') {
@@ -103,7 +105,9 @@ pipeline {
             label "Pi_Zero"
           }
           steps {
-            sh "docker push leonhess/dht22:latest"
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+              sh "docker push leonhess/dht22:latest"
+            }
           }
         }
         stage('Push DS18B20 DockerHub') {
@@ -111,7 +115,9 @@ pipeline {
             label "Pi_Zero"
           }
           steps {
-            sh "docker push leonhess/ds18b20:latest"
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+              sh "docker push leonhess/ds18b20:latest"
+            }
           }
         }
       }
@@ -124,9 +130,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/hs110"
-            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
-              sh "docker rmi leonhess/hs110"
-            }
+            sh "docker rmi leonhess/hs110"
           }
         }
         stage('Cleanup DS18B20') {
@@ -135,9 +139,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/ds18b20"
-            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
-              sh "docker rmi leonhess/ds18b20"
-            }
+            sh "docker rmi leonhess/ds18b20"
           }
         }
         stage('Cleanup DHT22') {
@@ -146,9 +148,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/dht22"
-            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
-              sh "docker rmi leonhess/dht22"
-            }
+            sh "docker rmi leonhess/dht22"
           }
         }
       }
