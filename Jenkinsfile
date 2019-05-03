@@ -1,37 +1,35 @@
 pipeline {
   agent any
   stages {
-    stage("Build Containers") {
-      steps {
-        parallel {
-          stage('Build HS110') {
-            agent {
-              label "Pi_3"
-            }
-            steps {
-              sh "docker build -t hs110 hs110/"
-            }
-          }
-        }
-        stage('Build DHT22') {
+    stages("Build Containers") {
+      parallel {
+        stage('Build HS110') {
           agent {
-            label "Pi_Zero"
+            label "Pi_3"
           }
           steps {
-            sh "docker build -t dht22 dht22/"
-          }
-        }
-        stage('Build DS18B20') {
-          agent {
-            label "Pi_Zero"
-          }
-          steps {
-            sh "docker build -t ds18b20 ds18b20/"
+            sh "docker build -t hs110 hs110/"
           }
         }
       }
+      stage('Build DHT22') {
+        agent {
+          label "Pi_Zero"
+        }
+        steps {
+          sh "docker build -t dht22 dht22/"
+        }
+      }
+      stage('Build DS18B20') {
+        agent {
+          label "Pi_Zero"
+        }
+        steps {
+          sh "docker build -t ds18b20 ds18b20/"
+        }
+      }
     }
-    stage("Tag & Push to Registry"){
+    stages("Tag & Push to Registry"){
       parallel{
         stage('Tag HS110') {
           agent {
@@ -62,7 +60,7 @@ pipeline {
         }
       }
     }
-    stage("Cleanup"){
+    stages("Cleanup"){
       parallel {
         stage('Cleanup HS110') {
           agent {
