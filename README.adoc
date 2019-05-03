@@ -340,3 +340,23 @@ docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
 
 == Jenkinsfile
 Jenkins Pipeline for building the Docker images and pushing to private Registry
+and Dockerhub
+
+.Setup
+|===
+|Device |Description
+
+|Raspberry Pi 3B+
+a|
+- Build node
+- Builds HS110 image
+
+|Raspberry Pi Zero W
+a|
+- Build node
+- Builds DHT22 & DS18B20 images
+
+|x86 machine
+a|
+- Master
+|===
