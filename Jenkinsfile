@@ -74,7 +74,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/hs110"
-            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
               sh "docker rmi leonhess/hs110"
             }
           }
@@ -85,7 +85,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/ds18b20"
-            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
               sh "docker rmi leonhess/ds18b20"
             }
           }
@@ -96,7 +96,7 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/dht22"
-            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+            withDockerRegistry([credentialsId: "dockerhub", url: ""]){
               sh "docker rmi leonhess/dht22"
             }
           }
