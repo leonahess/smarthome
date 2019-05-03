@@ -31,38 +31,44 @@ pipeline {
     }
     stage("Tag & Push to Registry"){
       parallel{
-        stage('Tag HS110') {
-          agent {
-            label "Pi_3"
-          }
-          steps {
-            sh "docker tag hs110 fx8350:5000/hs110:latest"
-            sh "docker tag hs110 leonhess/hs110:latest"
-            sh "docker push fx8350:5000/hs110:latest"
-            sh "docker push leonhess/hs110:latest"
-          }
-        }
-        stage('Tag DHT22') {
-          agent {
-            label "Pi_Zero"
-          }
-          steps {
-            sh "docker tag dht22 fx8350:5000/dht22:latest"
-            sh "docker tag dht22 leonhess/dht22:latest"
-            sh "docker push fx8350:5000/dht22:latest"
-            sh "docker push leonhess/dht22:latest"
+        stages {
+          stage('Tag HS110') {
+            agent {
+              label "Pi_3"
+            }
+            steps {
+              sh "docker tag hs110 fx8350:5000/hs110:latest"
+              sh "docker tag hs110 leonhess/hs110:latest"
+              sh "docker push fx8350:5000/hs110:latest"
+              sh "docker push leonhess/hs110:latest"
+            }
           }
         }
-        stage('Tag DS18B20') {
-          agent {
-            label "Pi_Zero"
+        stages {
+          stage('Tag DHT22') {
+            agent {
+              label "Pi_Zero"
+            }
+            steps {
+              sh "docker tag dht22 fx8350:5000/dht22:latest"
+              sh "docker tag dht22 leonhess/dht22:latest"
+              sh "docker push fx8350:5000/dht22:latest"
+              sh "docker push leonhess/dht22:latest"
+            }
           }
-          steps {
-            sh "docker tag ds18b20 fx8350:5000/ds18b20:latest"
-            sh "docker tag ds18b20 leonhess/ds18b20:latest"
-            sh "docker push fx8350:5000/ds18b20:latest"
-            sh "docker push leonhess/ds18b20:latest"
-          }
+        }
+        stages {
+          stage('Tag DS18B20') {
+            agent {
+              label "Pi_Zero"
+            }
+            steps {
+              sh "docker tag ds18b20 fx8350:5000/ds18b20:latest"
+              sh "docker tag ds18b20 leonhess/ds18b20:latest"
+              sh "docker push fx8350:5000/ds18b20:latest"
+              sh "docker push leonhess/ds18b20:latest"
+            }
+          }  
         }
       }
     }
