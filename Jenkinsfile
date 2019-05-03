@@ -105,8 +105,8 @@ pipeline {
           }
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
-              sh "docker push leonhess/hs110:latest"
               sh "docker push leonhess/hs110:${env.BUILD_NUMBER}"
+              sh "docker push leonhess/hs110:latest"
             }
           }
         }
@@ -116,8 +116,8 @@ pipeline {
           }
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
-              sh "docker push leonhess/dht22:latest"
               sh "docker push leonhess/dht22:${env.BUILD_NUMBER}"
+              sh "docker push leonhess/dht22:latest"
             }
           }
         }
@@ -127,8 +127,8 @@ pipeline {
           }
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
-              sh "docker push leonhess/ds18b20:latest"
               sh "docker push leonhess/ds18b20:${env.BUILD_NUMBER}"
+              sh "docker push leonhess/ds18b20:latest"
             }
           }
         }
