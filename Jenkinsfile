@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-    stage("Tag & Push to Registry"){
+    stage("Tag Images"){
       parallel{
         stage('Tag HS110') {
           agent {
@@ -72,7 +72,7 @@ pipeline {
         }
         stage('Push DHT22 local') {
           agent {
-            label "Pi_3"
+            label "Pi_Zero"
           }
           steps {
             sh "docker push fx8350:5000/dht22:latest"
@@ -80,7 +80,7 @@ pipeline {
         }
         stage('Push DS18B20 local') {
           agent {
-            label "Pi_3"
+            label "Pi_Zero"
           }
           steps {
             sh "docker push fx8350:5000/ds18b20:latest"
@@ -100,7 +100,7 @@ pipeline {
         }
         stage('Push DHT22 DockerHub') {
           agent {
-            label "Pi_3"
+            label "Pi_Zero"
           }
           steps {
             sh "docker push leonhess/dht22:latest"
@@ -108,7 +108,7 @@ pipeline {
         }
         stage('Push DS18B20 DockerHub') {
           agent {
-            label "Pi_3"
+            label "Pi_Zero"
           }
           steps {
             sh "docker push leonhess/ds18b20:latest"
