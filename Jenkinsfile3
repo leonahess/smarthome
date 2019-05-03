@@ -4,14 +4,20 @@ pipeline {
   stage("Build Containers") {
     steps {
       parallel (
-        hs110: {
-          sh "docker build -t hs110 hs110/"
+        agent('Pi-3') {
+          hs110: {
+            sh "docker build -t hs110 hs110/"
+          }
         },
-        ds18b20: {
-          sh "docker build -t ds18b20 ds18b20/"
+        agent('Pi-Zero') {
+          ds18b20: {
+            sh "docker build -t ds18b20 ds18b20/"
+            }
         },
-        dht22: {
-          sh "docker build -t dht22 dht22/"
+        agent('Pi-Zero') {
+          dht22: {
+            sh "docker build -t dht22 dht22/"
+          }
         }
       )
     }
