@@ -1,4 +1,0 @@
-node {
-  checkout scm
-  def customImage = docker.build("hs110", "./hs110/Dockerfile")
-}

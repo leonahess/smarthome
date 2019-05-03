@@ -29,9 +29,7 @@ pipeline {
         }
       }
     }
-  }
   stage("Tag & Push to Registry"){
-    steps {
       parallel{
         stage('Tag HS110') {
           agent {
@@ -62,7 +60,6 @@ pipeline {
         }
       }
     }
-  }
   stage("Cleanup"){
     parallel {
       stage('Cleanup HS110') {
