@@ -37,7 +37,9 @@ pipeline {
           }
           steps {
             sh "docker tag hs110 fx8350:5000/hs110:latest"
+            sh "docker tag hs110 fx8350:5000/hs110:${env.BUILD_NUMBER}"
             sh "docker tag hs110 leonhess/hs110:latest"
+            sh "docker tag hs110 leonhess/hs110:${env.BUILD_NUMBER}"
           }
         }
         stage('Tag DHT22') {
@@ -46,7 +48,9 @@ pipeline {
           }
           steps {
             sh "docker tag dht22 fx8350:5000/dht22:latest"
+            sh "docker tag dht22 fx8350:5000/dht22:${env.BUILD_NUMBER}"
             sh "docker tag dht22 leonhess/dht22:latest"
+            sh "docker tag dht22 leonhess/dht22:${env.BUILD_NUMBER}"
           }
         }
         stage('Tag DS18B20') {
@@ -55,7 +59,9 @@ pipeline {
           }
           steps {
             sh "docker tag ds18b20 fx8350:5000/ds18b20:latest"
+            sh "docker tag ds18b20 fx8350:5000/ds18b20:${env.BUILD_NUMBER}"
             sh "docker tag ds18b20 leonhess/ds18b20:latest"
+            sh "docker tag ds18b20 leonhess/ds18b20:${env.BUILD_NUMBER}"
           }
         }
       }
