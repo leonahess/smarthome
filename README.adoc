@@ -339,4 +339,4 @@ docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
 ....
 
 == Jenkinsfile
-Jenkins Pipeline for building the Dockerimages and pushing to private Registry
+Jenkins Pipeline for building the Docker images and pushing to private Registry

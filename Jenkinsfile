@@ -68,6 +68,7 @@ pipeline {
           }
           steps {
             sh "docker push fx8350:5000/hs110:latest"
+            sh "docker push fx8350:5000/hs110:${env.BUILD_NUMBER}"
           }
         }
         stage('Push DHT22 local') {
@@ -76,6 +77,7 @@ pipeline {
           }
           steps {
             sh "docker push fx8350:5000/dht22:latest"
+            sh "docker push fx8350:5000/dht22:${env.BUILD_NUMBER}"
           }
         }
         stage('Push DS18B20 local') {
@@ -84,6 +86,7 @@ pipeline {
           }
           steps {
             sh "docker push fx8350:5000/ds18b20:latest"
+            sh "docker push fx8350:5000/ds18b20:${env.BUILD_NUMBER}"
           }
         }
       }
@@ -97,6 +100,7 @@ pipeline {
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
               sh "docker push leonhess/hs110:latest"
+              sh "docker push leonhess/hs110:${env.BUILD_NUMBER}"
             }
           }
         }
@@ -107,6 +111,7 @@ pipeline {
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
               sh "docker push leonhess/dht22:latest"
+              sh "docker push leonhess/dht22:${env.BUILD_NUMBER}"
             }
           }
         }
@@ -117,6 +122,7 @@ pipeline {
           steps {
             withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
               sh "docker push leonhess/ds18b20:latest"
+              sh "docker push leonhess/ds18b20:${env.BUILD_NUMBER}"
             }
           }
         }
@@ -126,7 +132,7 @@ pipeline {
       parallel {
         stage('Cleanup HS110') {
           agent {
-            label "Pi_Zero"
+            label "Pi_3"
           }
           steps {
             sh "docker rmi fx8350:5000/hs110"
