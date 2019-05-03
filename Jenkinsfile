@@ -74,7 +74,9 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/hs110"
-            sh "docker rmi leonhess/hs110"
+            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+              sh "docker rmi leonhess/hs110"
+            }
           }
         }
         stage('Cleanup DS18B20') {
@@ -83,7 +85,9 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/ds18b20"
-            sh "docker rmi leonhess/ds18b20"
+            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+              sh "docker rmi leonhess/ds18b20"
+            }
           }
         }
         stage('Cleanup DHT22') {
@@ -92,7 +96,9 @@ pipeline {
           }
           steps {
             sh "docker rmi fx8350:5000/dht22"
-            sh "docker rmi leonhess/dht22"
+            withDockerRegistry([credentialsID: "dockerhub", url: ""]){
+              sh "docker rmi leonhess/dht22"
+            }
           }
         }
       }
