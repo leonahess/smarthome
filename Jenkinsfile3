@@ -1,4 +1,6 @@
-node{
+pipeline {
+  agent any
+  stages {
   stage("Build Containers") {
     steps {
       parallel (
@@ -38,5 +40,6 @@ node{
     sh "docker rmi ds18b20"
     sh "docker rmi hs110"
   }
+}
 }
 }
