@@ -1,4 +1,0 @@
-influxdb
-flask
-MarkupSafe
-python-dateutil

@@ -1,0 +1,15 @@
+[submodule "hs110"]
+	path = hs110
+	url = https://github.com/leonhess/hs110
+[submodule "dht22"]
+	path = dht22
+	url = https://github.com/leonhess/dht22
+[submodule "raspi_cpu"]
+	path = raspi_cpu
+	url = https://github.com/leonhess/raspi_cpu
+[submodule "website"]
+	path = website
+	url = https://github.com/leonhess/website
+[submodule "ds18b20"]
+	path = ds18b20
+	url = https://github.com/leonhess/ds18b20
