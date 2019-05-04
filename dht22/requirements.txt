@@ -1,2 +1,0 @@
-influxdb
-Adafruit_DHT

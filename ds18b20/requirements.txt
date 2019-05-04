@@ -1,2 +1,0 @@
-influxdb
-w1thermsensor
