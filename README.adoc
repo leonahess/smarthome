@@ -1,5 +1,10 @@
 = Various Python scripts for a DIY smarthome solution
 
+To clone the repo with all submodules:
+....
+git clone --recurse-submodules https://github.com/leonhess/smarthome
+....
+
 The backbone of all scripts is a https://www.influxdata.com/[InfluxDB] instance running. All the Sensor scripts write to the https://www.influxdata.com/[InfluxDB] instance,
 while the website or a https://grafana.com/[Grafana] instance ist used to visualize the data.
 
