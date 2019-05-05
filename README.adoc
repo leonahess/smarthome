@@ -343,9 +343,9 @@ docker build -t raspi_cpu .
 docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
 ....
 
-== Jenkinsfile
+== Jenkinsfiles
 Jenkins Pipeline for building the Docker images and pushing to private Registry
-and Dockerhub
+and Dockerhub and then Deploying to the right Raspberrys
 
 .Setup
 |===
