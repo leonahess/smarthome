@@ -102,6 +102,7 @@ docker run \
   -d \
   -p 8086:8086 \
   -v /var/lib/influxdb:/var/lib/influxdb \
+  -v $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro \
   influxdb:latest
 ....
 
