@@ -95,23 +95,27 @@ a|
 == InfluxDB
 Quickly get a Docker container up and running with:
 
+Create a Docker Volume for persistent Database storage:
+....
+docker volume create influxdb-storage
+....
+
 ....
 docker run \
   --name influxdb \
   --restart always \
   -d \
   -p 8086:8086 \
-  -v /var/lib/influxdb:/var/lib/influxdb \
+  -v influxdb-storage:/var/lib/influxdb \
   -v $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro \
   influxdb:latest
 ....
 
-runs the default config
-
 - ``--name influxdb`` sets the name of the container
 - ``-d`` detaches the container from the shell
 - ``-p 8086:8086`` opens the influx specific port
-- ``-v /var/lib/influxdb:/var/lib/influxdb`` mount the internal data directory to the outside file system for persistent database storage
+- ``-v influxdb-storage:/var/lib/influxdb`` mount the internal data directory to the storage volume for persistent database storage
+- ``-v $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro`` runs Influx with the config in your current directory, leave out for default config
 
 === Run the Influx Shell
 Start the Influx Container above, then run:
