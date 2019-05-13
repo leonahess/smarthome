@@ -126,14 +126,16 @@ docker exec -it influxdb influx
 == Telegraf
 Quickly get a Docker container up and running:
 
-``cd`` into the ``configs`` directory and run:
 ....
 docker run \
   -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
   --restart always \
   --name=telegraf \
   -d \
+  -h raspi-cluster-3 \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -e HOST_PROC=/host/proc \
+  -v /proc:/host/proc:ro \
   telegraf
 ....
 
