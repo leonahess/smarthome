@@ -2,6 +2,10 @@
 :toc:macro
 :numbered: 1
 
+
+toc::[]
+
+== Quickstart
 To clone the repo with all submodules:
 ....
 git clone --recurse-submodules https://github.com/leonhess/smarthome
@@ -17,8 +21,6 @@ while the website or a https://grafana.com/[Grafana] instance ist used to visual
 
 Everything is supposed to run on python3.7, most things should run with older python3 versions, but ``raspi_cpu``
 requires python3.7.
-
-toc::[]
 
 == Overview
 
