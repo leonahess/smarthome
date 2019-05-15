@@ -1,4 +1,5 @@
 = Various Python scripts for a DIY smarthome solution
+:toc:macro
 
 To clone the repo with all submodules:
 ....
@@ -16,7 +17,7 @@ while the website or a https://grafana.com/[Grafana] instance ist used to visual
 Everything is supposed to run on python3.7, most things should run with older python3 versions, but ``raspi_cpu``
 requires python3.7.
 
-:toc:
+toc::[]
 
 == Overview
 
@@ -70,25 +71,43 @@ or update already running scripts.
 
 .Setup
 |===
-|Device |Scripts |Description
+|Name |Device |Services |Description
 
+|Collectors
+|2x Raspberry Pi Zero W
+a|
+- dht22
+- ds18b20
+|
+
+|Database
 |Raspberry Pi 3B+
 a|
-- influx
+- influxDB
 - hs110
-- raspi_cpu
 - website
-a|
-- central hub
-- runs the database and central scripts
-
-|Raspberry Pi Zero W
-a|
-- ds18b20
-- dht22
 - raspi_cpu
+- jenkins slave
+- telegraf
+|
+
+|Kubernetes Cluster
+|3x Raspberry Pi 3B+
 a|
-- sends data to the hub
+- telegraf
+|Currently does nothing
+
+| x86 Machine
+|AMD FX CPU
+a|
+- grafana
+- jenkins
+- ansible
+- registry
+- registry-browser
+- telegraf
+|Runs the heavy apps and stuff that doesnt run on ARM
+
 
 |===
 
