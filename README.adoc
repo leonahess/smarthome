@@ -1,5 +1,6 @@
 = Various Python scripts for a DIY smarthome solution
 :toc:macro
+:numbered: 1
 
 To clone the repo with all submodules:
 ....
