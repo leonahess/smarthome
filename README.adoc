@@ -2,6 +2,7 @@
 :toc: macro
 :numbered: 1
 
+README is pending a overhaul!
 
 toc::[]
 
@@ -192,6 +193,10 @@ A python Flask to display various stats about the setup
 3. admin panel to change what is displayed
 
 ==== Docker
+
+....
+docker run --restart always -d --name=website -p 5000:5000 leonhess/website:latest
+....
 
 == ds18b20
 reads ds18b20 sensors connected to a RaspberryPi
