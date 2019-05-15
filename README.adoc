@@ -1,5 +1,5 @@
 = Various Python scripts for a DIY smarthome solution
-:toc:macro
+:toc: macro
 :numbered: 1
 
 
