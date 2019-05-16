@@ -1,0 +1,5 @@
+[database]
+pi@leon-raspi-cluster-3
+[collectors]
+pirate@leon-pi-zero-1
+pirate@leon-pi-zero-2
