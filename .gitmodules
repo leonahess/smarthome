@@ -13,3 +13,6 @@
 [submodule "ds18b20"]
 	path = ds18b20
 	url = https://github.com/leonhess/ds18b20
+[submodule "telegraf"]
+	path = telegraf
+	url = https://github.com/leonhess/telegraf
