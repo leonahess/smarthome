@@ -2,8 +2,6 @@
 :toc: macro
 :numbered: 1
 
-README is pending a overhaul!
-
 toc::[]
 
 == Quickstart
@@ -84,10 +82,9 @@ a|
 - ds18b20
 |
 
-|Database
+|Pi 3
 |Raspberry Pi 3B+
 a|
-- influxDB
 - hs110
 - website
 - raspi_cpu
@@ -104,6 +101,7 @@ a|
 | x86 Machine
 |AMD FX CPU
 a|
+- influxDB
 - grafana
 - jenkins
 - ansible
@@ -162,6 +160,8 @@ docker run \
   telegraf
 ....
 
+But I also build my own Telegraf container with my custom Config baked in.
+
 == Grafana
 Quickly get a Docker container up and running:
 
@@ -186,11 +186,13 @@ A python Flask to display various stats about the setup
 
 ==== Getting started
 
-- Currently only displays temperature and humidity from the ``ds18b20`` and ``dht22`` scripts.
+- Currently only displays temperature and humidity from the ``ds18b20``, ``dht22`` and ``hs110`` scripts.
+
+image::website_graphs.png[website]
+
 - Things to implement:
 1. Data of the other scripts
-2. some sort of graphs
-3. admin panel to change what is displayed
+2. admin panel to change what is displayed
 
 ==== Docker
 
@@ -238,11 +240,22 @@ name of your choosing.
 If you don't know the unique IDs of your DS18B20s you can run ``python3 get_ds18b20_ids.py``
 which will print them out for you.
 
-``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
+- ``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
+- ``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
+- ``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
+- ``influx_retention_policy = "2w"`` sets the retention policy, the amount of time until Influx discards your data, for infinite retention use ``"autogen"``
 
-``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
-
-``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
+Possible retention intervals:
+....
+ns	nanoseconds (1 billionth of a second)
+u or µ	microseconds (1 millionth of a second)
+ms	milliseconds (1 thousandth of a second)
+s	second
+m	minute
+h	hour
+d	day
+w	week
+....
 
 ==== Docker
 ``cd`` into the ``dht22`` directory, then run:
@@ -305,6 +318,19 @@ add a name of your choosing.
 - ``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server or localhost if you run it on your RPi
 - ``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
 - ``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
+- ``influx_retention_policy = "2w"`` sets the retention policy, the amount of time until Influx discards your data, for infinite retention use ``"autogen"``
+
+Possible retention intervals:
+....
+ns	nanoseconds (1 billionth of a second)
+u or µ	microseconds (1 millionth of a second)
+ms	milliseconds (1 thousandth of a second)
+s	second
+m	minute
+h	hour
+d	day
+w	week
+....
 
 ==== Docker
 ``cd`` into the ``dht22`` directory, then run:
@@ -353,12 +379,30 @@ If you want to check the status of the script:
 ``sudo systemctl status smarthome_dht22.service``
 
 == hs110
-Reads TP.Link HS110 smart wallplugs
+Reads TP.Link HS110 smart wallplugs.
 
 ==== Getting started
-setup all you ``HS110``'s with the Kasa App.
+Setup all you ``HS110``'s with the Kasa App.
+Then adjust the config to your needs and run the commands from the Docker section to get the container running.
 
 ==== Config
+- ``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server
+- ``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
+- ``influx_database = "smarthome"`` sets the database name, default is ``smarthome``.
+- ``influx_retention_policy = "12w"`` sets the retention policy, the amount of time until Influx discards your data, for infinite retention use ``"autogen"``
+
+Possible retention intervals:
+....
+ns	nanoseconds (1 billionth of a second)
+u or µ	microseconds (1 millionth of a second)
+ms	milliseconds (1 thousandth of a second)
+s	second
+m	minute
+h	hour
+d	day
+w	week
+....
+
 ==== Docker
 ``cd`` into the ``hs110`` directory, then run:
 
@@ -369,38 +413,35 @@ docker run --net=host --restart always -d --name=hs110 hs110
 ....
 
 == raspi_cpu
-Reads the temperature and cpu frequency of a raspberry pi
+Reads the temperature and cpu frequency of a raspberry pi 3B+
 
 ==== Getting started
+Adjust the config to your needs. Then run the commands from the Docker section to get the container running.
+
 ==== Config
+- ``influx_ip = "192.168.66.56"`` sets the IP of your InfluxDB Server
+- ``influx_port = "8086"`` sets the port of the InfluxDB Server, default is ``8086``.
+- ``influx_database = "telegraf"`` sets the database name, default is ``telegraf``.
+- ``hostname = raspi-cluster-3`` sets the hostname of the container, since you can't access it otherwise
+- ``influx_retention_policy = "2w"`` sets the retention policy, the amount of time until Influx discards your data, for infinite retention use ``"autogen"``
+
+Possible retention intervals:
+....
+ns	nanoseconds (1 billionth of a second)
+u or µ	microseconds (1 millionth of a second)
+ms	milliseconds (1 thousandth of a second)
+s	second
+m	minute
+h	hour
+d	day
+w	week
+....
+
 ==== Docker
 ``cd`` into the ``raspi_cpu`` directory, then run:
 
 ....
 docker build -t raspi_cpu .
 
-docker run --net=host --restart always -d --name=raspi_cpu raspi_cpu
+docker run --net=host --restart always --privileged -d --name=raspi_cpu raspi_cpu
 ....
-
-== Jenkinsfiles
-Jenkins Pipeline for building the Docker images and pushing to private Registry
-and Dockerhub and then Deploying to the right Raspberrys
-
-.Setup
-|===
-|Device |Description
-
-|Raspberry Pi 3B+
-a|
-- Build node
-- Builds HS110 image
-
-|Raspberry Pi Zero W
-a|
-- Build node
-- Builds DHT22 & DS18B20 images
-
-|x86 machine
-a|
-- Master
-|===
