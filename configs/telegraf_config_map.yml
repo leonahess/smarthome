@@ -20,9 +20,9 @@ data:
       hostname = "$HOSTNAME"
       omit_hostname = false
     [[outputs.influxdb]]
-      urls = ["http://192.168.66.133:8086"]
+      urls = ["http://192.168.66.56:8086"]
       database = "telegraf"
-      retention_policy = "autogen"
+      retention_policy = "2w"
       write_consistency = "any"
       timeout = "5s"
       user_agent = "telegraf"
