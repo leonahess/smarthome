@@ -50,3 +50,9 @@ data:
       name_override = "cpu_temperature"
       data_format = "grok"
       grok_patterns = ["%{NUMBER:value:float}"]
+    [[inputs.exec]]
+      commands = [ "/opt/vc/bin/vcgencmd measure_clock arm" ]
+      name_override = "cpu_frequency"
+      data_format = "grok"
+      grok_patterns = ["%{FREQUENCY:freq:int}"]
+      grok_custom_patterns = 'FREQUENCY [0-9]{9,10}'
