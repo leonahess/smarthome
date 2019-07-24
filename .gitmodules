@@ -16,3 +16,6 @@
 [submodule "telegraf"]
 	path = telegraf
 	url = https://github.com/leonhess/telegraf
+[submodule "influx"]
+	path = influx
+	url = https://github.com/leonhess/influx
