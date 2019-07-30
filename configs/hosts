@@ -1,18 +1,27 @@
 [database]
-pi@leon-raspi-cluster-3
+pi@leon-raspi-4-0
 
 [collectors]
 pirate@leon-pi-zero-1
 pirate@leon-pi-zero-2
 
-[swarm]
-pi@192.168.66.130
+[swarm_master]
+pi@leon-raspi-3-0
+
+[swarm_nodes]
+pi@leon-raspi-3-1
+pi@leon-raspi-3-2
+
+[Pi0]
+pirate@leon-raspi-0-0
+pirate@leon-raspi-0-1
+
+[Pi3B]
+pi@leon-raspi-3-0
+pi@leon-raspi-3-1
+pi@leon-raspi-3-2
+pi@leon-raspi-3-3
+pi@leon-raspi-3-4
 
 [Pi4]
-pi@192.168.66.140
-
-[Pi3B+]
-pi@192.168.66.130
-pi@192.168.66.131
-pi@192.168.66.132
-pi@192.168.66.133
+pi@leon-raspi-4-0
