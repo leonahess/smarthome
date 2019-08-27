@@ -2,8 +2,8 @@
 pi@leon-raspi-4-0
 
 [collectors]
-pirate@leon-pi-zero-1
-pirate@leon-pi-zero-2
+pirate@leon-raspi-0-0
+pirate@leon-raspi-0-1
 
 [swarm_master]
 pi@leon-raspi-3-0
@@ -25,3 +25,6 @@ pi@leon-raspi-3-4
 
 [Pi4]
 pi@leon-raspi-4-0
+
+[amd64]
+leonhess@i5
