@@ -7,7 +7,7 @@ toc::[]
 == Quickstart
 To clone the repo with all submodules:
 ....
-git clone --recurse-submodules https://github.com/leonhess/smarthome
+git clone --recurse-submodules https://github.com/leonahess/smarthome
 ....
 
 or if you pulled without the submodules you can pull them afterwards with
